@@ -57,6 +57,39 @@ const ProductDetails = () => {
         }
     };
 
+    const handleBuyItNow = async () => {
+        const token = localStorage.getItem('token');
+        if (!token) {
+            toast.error("Please login to buy products");
+            return;
+        }
+        if (!isWishlisted) {
+            try {
+                const response = await axios.post(
+                    `${backendUrl}/seclob/wishlist/toggle`,
+                    { productId },
+                    {
+                        headers: {
+                            Authorization: `Bearer ${token}`,
+                        },
+                    }
+                );
+                if (response.data) {
+                    await dispatch(fetchLoginedUser());
+                }
+            } catch (error) {
+                console.error("Error adding to wishlist for Buy it now:", error);
+                toast.error("Failed to add product to items");
+                return;
+            }
+        }
+        const offcanvasElement = document.getElementById('offcanvasExample');
+        if (offcanvasElement && window.bootstrap) {
+            const bsOffcanvas = window.bootstrap.Offcanvas.getOrCreateInstance(offcanvasElement);
+            bsOffcanvas.show();
+        }
+    };
+
 
     const increment = () => {
         setQuantity(prev => prev + 1);
@@ -433,7 +466,7 @@ const ProductDetails = () => {
                             </div>
                             <div className="button-section">
                                 <Link><button onClick={() => setAddProductModalIsOpen(true)}>Edit product</button></Link>
-                                <button>Buy it now</button>
+                                <button onClick={handleBuyItNow}>Buy it now</button>
                                 <div className="wishlist" onClick={handleWishlistToggle}>
                                     {isWishlisted ? (
                                         <IoIosHeart className='heart-icon' style={{ color: 'red' }} />

@@ -176,7 +176,7 @@
 
     .deskTopNav {
         position: relative;
-        z-index: 1;
+        z-index: 9999;
 
         .navigaton-bar {
             position: fixed;
@@ -184,6 +184,7 @@
             height: auto;
             min-height: 100px;
             background-color: #003F62;
+            z-index: 9999;
 
             .nav-container {
                 display: flex;
