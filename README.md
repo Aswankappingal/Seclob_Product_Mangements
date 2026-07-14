@@ -2,7 +2,7 @@
 
 I Completed the all requirement in the assesment document.
 
-I added some data. I am using MongoDB . So you can access the added data.
+I have already added the required data to MongoDB. If you cannot access the data, please update the MongoDB database URL in the environment configuration and use your own database connection URL. After changing the database URL, restart the backend server and verify that the data is loading correctly.
 
 In my github repo have two folder frontend and backend
 
