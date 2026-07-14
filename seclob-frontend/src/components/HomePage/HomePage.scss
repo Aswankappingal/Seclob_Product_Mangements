@@ -21,6 +21,7 @@
             }
 
             .detail-right {
+                padding: 2rem 3rem;
                 width: 80%;
             }
         }
@@ -288,91 +289,184 @@
 
     // .sideBarMainWrapper {
     .sidebar {
-        background-color: rgb(255, 255, 255);
+        background-color: #ffffff;
         width: 100%;
-        height: 100vh;
+        padding: 16px 12px;
+        border-right: 1px solid #f0f0f0;
 
         h5 {
-            font-family: Poppins;
-            font-size: 16.09px;
-            font-weight: 500;
-            line-height: 24.14px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 15px;
+            font-weight: 600;
             color: #003F62;
-
+            margin-bottom: 10px;
+            letter-spacing: 0.2px;
         }
 
         h6 {
-            font-family: Poppins;
-            font-size: 16.09px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
             font-weight: 400;
-            line-height: 24.14px;
+        
+            color: #444;
+            margin-bottom: 14px;
+            cursor: pointer;
 
+            &:hover {
+                color: #003F62;
+            }
         }
 
-        .accordion-button {
-            background-color: white !important;
-        }
+        .accordian-section {
 
-        .accordion-item {
-            border: none !important;
-        }
+            // Override react-bootstrap-accordion styles
+            .accordion__item {
+                border: none !important;
+                border-bottom: none !important;
+                margin-bottom: 2px;
+            }
 
-        .accordion-button:not(.collapsed) {
-            color: #000000;
-            box-shadow: inset 0 -1px 0 rgb(0 0 0 / 13%);
+            // Category title row (accordion header)
+            .accordion__button {
+                background-color: #ffffff !important;
+                border: none !important;
+                box-shadow: none !important;
+                padding: 10px 4px !important;
+                font-family: 'Poppins', sans-serif !important;
+                font-size: 14.5px !important;
+                font-weight: 500 !important;
+                color: #222 !important;
+                display: flex !important;
+                justify-content: space-between !important;
+                align-items: center !important;
+                cursor: pointer;
+
+                // Custom arrow icon
+                &::after {
+                    content: '›';
+                    font-size: 20px;
+                    color: #555;
+                    font-weight: 300;
+                    margin-left: auto;
+                    transition: transform 0.25s ease;
+                    line-height: 1;
+                }
+
+                &[aria-expanded="true"]::after {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .accordion__panel {
+                padding: 4px 0 8px 4px !important;
+                border: none !important;
+                background: transparent !important;
+            }
+
+            // Bootstrap accordion overrides (fallback)
+            .accordion-button {
+                background-color: #ffffff !important;
+                border: none !important;
+                box-shadow: none !important;
+                padding: 10px 4px !important;
+                font-family: 'Poppins', sans-serif !important;
+                font-size: 14.5px !important;
+                font-weight: 500 !important;
+                color: #222 !important;
+
+                &::after {
+                    filter: none !important;
+                    background-image: none !important;
+                    content: '›';
+                    font-size: 20px;
+                    color: #555;
+                }
+
+                &:not(.collapsed) {
+                    color: #222 !important;
+                    box-shadow: none !important;
+
+                    &::after {
+                        transform: rotate(90deg);
+                    }
+                }
+            }
+
+            .accordion-item {
+                border: none !important;
+                background: transparent !important;
+            }
+
+            .accordion-body {
+                padding: 4px 0 8px 4px !important;
+            }
         }
 
         .checkbox-wrapper {
             display: flex;
             align-items: center;
-            margin-bottom: 8px;
-
-
-
-
+            gap: 10px;
+            margin-bottom: 10px;
+            padding: 2px 4px;
 
             input[type="checkbox"] {
                 -webkit-appearance: none;
                 -moz-appearance: none;
                 appearance: none;
-                width: 23px;
-                height: 23px;
-                border: 2px solid #555;
-                border-radius: 4px;
-                background-color: #e0e0e0;
-                display: inline-block;
+                width: 26px;
+                height: 26px;
+                border: none;
+                border-radius: 8px;
+                background-color: #d6e4ed;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
                 position: relative;
                 cursor: pointer;
                 outline: none;
-                margin-right: 8px;
-                transition: background-color 0.3s ease;
+                flex-shrink: 0;
+                transition: background-color 0.2s ease, transform 0.15s ease;
+
+                &:hover {
+                    background-color: #c0d8e8;
+                    transform: scale(1.05);
+                }
 
                 &:checked {
-                    background-color: #555;
-                    border-color: #555;
+                    background-color: #3a3a3a;
+                    border-color: #3a3a3a;
+                    transform: scale(1.0);
                 }
 
                 &:checked::after {
                     content: '✔';
-                    font-size: 12px;
-                    color: white;
+                    font-size: 13px;
+                    color: #ffffff;
                     position: absolute;
                     top: 50%;
                     left: 50%;
                     transform: translate(-50%, -50%);
+                    line-height: 1;
                 }
             }
 
             label {
                 cursor: pointer;
+                font-family: 'Poppins', sans-serif;
                 font-size: 14px;
+                font-weight: 400;
                 color: #333;
+                user-select: none;
+
+                &:hover {
+                    color: #003F62;
+                }
             }
         }
 
     }
 
-    // }
+    // } }
 
     .product-listing-wrapper {
         width: 100%;

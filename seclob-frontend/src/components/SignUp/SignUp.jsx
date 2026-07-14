@@ -22,13 +22,13 @@ const SignUp = () => {
         e.preventDefault();
         await signup(formData);
     };
-  // Navigate to '/signin' when signup is successful
-  useEffect(() => {
-    if (user) {
-        // navigate('/signin');
-        window.location.href='/signin'
-    }
-}, [user, navigate]);
+    // Navigate to '/signin' when signup is successful
+    useEffect(() => {
+        if (user) {
+            // navigate('/signin');
+            window.location.href = '/signin'
+        }
+    }, [user, navigate]);
     return (
         <div className='signUpMainWrapper'>
             <div className="row">
@@ -48,7 +48,7 @@ const SignUp = () => {
                         <div className="content">
                             <form onSubmit={handleSubmit}>
                                 <h2>Create Account</h2>
-                            
+
                                 <div className='input'>
                                     <div className="left"><FiUser className='input-icon' /></div>
                                     <div className="right">

@@ -1,4 +1,4 @@
-.SigninMainWrapper{
+.SigninMainWrapper {
     overflow-x: hidden;
 
     .signup-left {
@@ -65,25 +65,30 @@
         align-items: center;
         height: 100vh;
         justify-content: center;
-        .error-message{
+   
+
+        .error-message {
             color: red;
             padding-left: 1.2rem;
         }
-        .forget-pwd{
+
+        .forget-pwd {
             font-family: Montserrat;
-        font-size: 16.97px;
-        padding-bottom: 3rem;
-        font-weight: 700;
-        line-height: 30.84px;
-        text-align: center;
-        text-decoration-line: underline;
-        text-decoration-style: solid;
-        text-underline-position: from-font;
-        text-decoration-skip-ink: none;
-        a{
-            color: black;
+            font-size: 16.97px;
+            padding-bottom: 3rem;
+            font-weight: 700;
+            line-height: 30.84px;
+            text-align: center;
+            text-decoration-line: underline;
+            text-decoration-style: solid;
+            text-underline-position: from-font;
+            text-decoration-skip-ink: none;
+
+            a {
+                color: black;
+            }
         }
-        }
+
         .content {
             h2 {
                 font-family: Montserrat;
@@ -164,11 +169,13 @@
             }
         }
     }
-    @media(max-width:991px){
-        .signup-left{
+
+    @media(max-width:991px) {
+        .signup-left {
             display: none;
-            
+
         }
+
         h2 {
             font-size: 26.78px !important;
             line-height: 39.22px !important;

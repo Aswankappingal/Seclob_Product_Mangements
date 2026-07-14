@@ -1,21 +1,51 @@
 .breadcrumb {
-    padding: 10px 0;
-    
-    .separator {
-      margin: 0 10px;
-      color: #666;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 8px 0;
+    gap: 2px;
+    background: transparent;
+    margin-bottom: 0;
+
+    span {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
     }
-    
+
     a {
-      color: #0066cc;
-      text-decoration: none;
-      
-      &:hover {
-        text-decoration: underline;
-      }
+        font-family: 'Poppins', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        color: #333;
+        text-decoration: none;
+        transition: color 0.2s ease;
+
+        &:hover {
+            color: #003F62;
+            text-decoration: none;
+        }
     }
-    
+
+    .separator {
+        display: inline-flex;
+        align-items: center;
+        margin: 0 2px;
+        color: #555;
+        font-size: 18px;
+        line-height: 1;
+
+        svg {
+            width: 18px;
+            height: 18px;
+            color: #555;
+        }
+    }
+
     .current {
-      color: #666;
+        font-family: 'Poppins', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        color: #333;
     }
-  }
+}
