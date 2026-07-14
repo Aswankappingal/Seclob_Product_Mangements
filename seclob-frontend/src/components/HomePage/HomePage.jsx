@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import Breadcrumb from '../BreadCrumb/BreadCrumb';
 import Navbar from '../Navbar/Navbar'
 import { Accordion } from 'react-bootstrap-accordion';
@@ -50,6 +50,29 @@ const HomePage = () => {
             reader.onerror = (error) => reject(error);
         });
     };
+
+    const location = useLocation();
+
+
+    // CHANGED: Automatically fetch fresh HomePage data whenever the user navigates
+    // to this page, including browser Back/Forward navigation.
+    useEffect(() => {
+        const refreshHomePageData = async () => {
+            try {
+                await Promise.all([
+                    refetchCategories(),
+                    refetchSubCategories(),
+                    refetchAllProducts(),
+                ]);
+            } catch (refreshError) {
+                console.error('Failed to refresh HomePage data:', refreshError);
+            }
+        };
+
+        refreshHomePageData();
+
+    
+    }, [location.key]);
 
 
 
