@@ -1,0 +1,359 @@
+.productdetailsMainWrapper {
+    .add-category-overlay {
+        width: 100%;
+        height: 100vh;
+        position: fixed;
+        left: 0;
+        top: 0;
+        background-color: rgba(0, 0, 0, 0.729);
+        z-index: 999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .add-prod-modal {
+        width: fit-content;
+        background-color: white;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        padding: 2rem;
+        border-radius: 16px;
+        height: 95vh;
+        overflow-y: scroll;
+
+        .selected-images {
+            display: flex;
+
+            .image-container {
+                width: 120px;
+                height: 80px;
+                border: 1px solid #3C3C3C73;
+                border-radius: 12px;
+                margin-left: 10px;
+                overflow: hidden;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+
+            .upload-image {
+                width: 120px;
+                height: 80px;
+                border: 1px solid #3C3C3C73;
+                border-style: dashed;
+                border-radius: 12px;
+                margin-left: 10px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+
+        tr {
+            height: 80px;
+        }
+
+        h3 {
+            font-family: Montserrat;
+            font-size: 25px;
+            font-weight: 600;
+            line-height: 30.48px;
+            text-align: center;
+            text-underline-position: from-font;
+            text-decoration-skip-ink: none;
+            margin-bottom: 2rem;
+
+        }
+
+        .table-key {
+            font-family: Montserrat;
+            font-size: 20px;
+            font-weight: 500;
+            line-height: 29.26px;
+            text-align: left;
+            text-underline-position: from-font;
+            text-decoration-skip-ink: none;
+            color: #3C3C3C73;
+        }
+
+        .productname-section {
+
+            input,
+            select {
+                width: 100%;
+                border: 1px solid #3C3C3C73;
+                height: 40px;
+                border-radius: 12px;
+                padding-left: 1rem;
+            }
+        }
+
+        .key-variance {
+            display: flex;
+            align-items: start;
+            padding-top: 10px;
+        }
+
+        .variance-data {
+            span {
+                margin-left: 10px;
+            }
+
+            .variance-details {
+                margin-bottom: 1rem;
+            }
+
+            input {
+                width: 100px;
+                border: 1px solid #3C3C3C73;
+                height: 40px;
+                border-radius: 12px;
+                padding-left: 1rem;
+            }
+
+           
+        }
+        .add-variance-btn {
+            display: block;
+            margin-left: auto;
+            background-color: #3C3C3C;
+            color: white;
+            font-family: Montserrat;
+            font-size: 17px;
+            font-weight: 500;
+            line-height: 20.72px;
+            text-align: center;
+            text-underline-position: from-font;
+            text-decoration-skip-ink: none;
+            padding: 5px 20px;
+            border-radius: 12px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: end;
+            padding-top: 1rem;
+            gap: 1rem;
+
+            button {
+                font-family: Montserrat;
+                font-size: 15.33px;
+                font-weight: 500;
+                line-height: 26px;
+                text-align: center;
+                text-underline-position: from-font;
+                text-decoration-skip-ink: none;
+                padding: 4px 26px;
+                border-radius: 8px;
+
+            }
+
+            .addProd {
+                background-color: #EDA415;
+                color: white;
+                border: 1px solid #EDA415;
+            }
+
+            .discartProd {
+                background-color: #EEEEEE;
+                color: rgb(0, 0, 0);
+                border: 1px solid #EEEEEE;
+            }
+        }
+    }
+
+    .details-wrapper {
+        overflow-x: hidden;
+        padding-top: 7rem !important;
+        padding: 2rem;
+
+        .details-left {
+            .main-image {
+                width: 100%;
+                height: 300px;
+                border: 1px solid #ACACAC;
+                border-radius: 20px;
+                margin-bottom: 1rem;
+                overflow: hidden;
+                img{
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+
+            .child-image {
+                width: 100%;
+                height: 100px;
+                border: 1px solid #ACACAC;
+                border-radius: 20px;
+                overflow: hidden;
+                background-color: red;
+                img{
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+        }
+
+        .details-right {
+            padding-top: 5rem;
+            padding-left: 3rem;
+
+            .product-details {
+                padding-bottom: 2rem;
+                border-bottom: 1px solid #BDBDBD;
+            }
+
+            .product-title {
+                font-family: Poppins;
+                font-size: 30px;
+                font-weight: 500;
+                line-height: 45px;
+                text-align: left;
+                text-underline-position: from-font;
+                text-decoration-skip-ink: none;
+                color: #003F62;
+            }
+
+            .price {
+                font-family: Poppins;
+                font-size: 29.68px;
+                font-weight: 600;
+                line-height: 44.51px;
+                text-align: left;
+                text-underline-position: from-font;
+                text-decoration-skip-ink: none;
+                color: #4A4A4A;
+            }
+
+            .availablity {
+                font-family: Poppins;
+                font-size: 18.17px;
+                font-weight: 500;
+                line-height: 27.26px;
+                text-align: left;
+                text-underline-position: from-font;
+                text-decoration-skip-ink: none;
+                color: #232323;
+            }
+
+            .stock-status {
+                font-family: Poppins;
+                font-size: 18.17px;
+                font-weight: 500;
+                line-height: 27.26px;
+                text-align: left;
+                text-underline-position: from-font;
+                text-decoration-skip-ink: none;
+                color: #30BD57;
+                padding-left: 1rem;
+            }
+
+            .stock-count-text {
+                font-family: Poppins;
+                font-size: 15.93px;
+                font-weight: 400;
+                line-height: 23.89px;
+                text-align: left;
+                text-underline-position: from-font;
+                text-decoration-skip-ink: none;
+                color: #5D5D5D;
+            }
+
+            .variant-details {
+                padding-top: 2rem;
+
+                .ram-section {
+                    display: flex;
+                    align-items: center;
+                    gap: 1rem;
+
+                    .ram-item {
+                        padding: 5px 10px;
+                        background-color: #EEEEEE;
+                    }
+
+                    .active-ram {
+                        border: 1px solid #000000;
+                    }
+                }
+
+                .button-section {
+                    display: flex;
+                    padding-top: 1rem;
+                    gap: 2rem;
+
+                    button {
+                        background-color: #EDA415;
+                        border: 1px solid #EDA415;
+                        color: white;
+                        border-radius: 32px;
+                        width: 200px;
+                        height: 51px;
+                        font-family: Poppins;
+                        font-size: 17.7px;
+                        font-weight: 600;
+                        line-height: 34.05px;
+                        text-underline-position: from-font;
+                        text-decoration-skip-ink: none;
+
+                    }
+
+                    .wishlist {
+                        height: 51px;
+                        width: 51px;
+                        background-color: red;
+                        border-radius: 50%;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        background-color: #EEEEEE;
+                        .heart-icon{
+                            width: 30px;
+                            height: 30px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    @media(max-width:991px){
+        .details-wrapper {
+            padding-top: 9rem !important;
+            .details-right {
+                padding-left: 1rem !important;
+                .button-section {
+                    display: flex;
+                    padding-top: 1rem;
+                    gap: 2rem;
+                    align-items: center;
+
+                    button {
+                        border-radius: 12px !important;
+                        width: 100px !important;
+                        height: 30px !important;
+                        font-size: 12.7px !important;
+                        line-height: 14.05px !important;
+
+                    }
+
+                    .wishlist {
+                        height: 30px !important;
+                        width: 30px !important;
+                        .heart-icon{
+                            width: 15px !important;
+                            height: 15px !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,21 @@
+.breadcrumb {
+    padding: 10px 0;
+    
+    .separator {
+      margin: 0 10px;
+      color: #666;
+    }
+    
+    a {
+      color: #0066cc;
+      text-decoration: none;
+      
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+    
+    .current {
+      color: #666;
+    }
+  }
