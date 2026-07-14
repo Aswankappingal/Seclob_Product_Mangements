@@ -10,12 +10,12 @@ i will explain how to run the project
 
 1. git clone <repo-url>
 # Run Backend
-1. cd /artifitia/
-2. cd /artifitia-backend/
+1. cd /seclob/
+2. cd /seclob-backend/
 3. npm install
 4. node app.js (then backend is running on http://localhost:3000)
 # Run Frontend
-1. cd /artifitia/
-2. cd /artifitia-frontend/
+1. cd /seclob/
+2. cd /seclob-frontend/
 3. npm install
 4. npm run dev (then frontend is running on http://localhost:3001)

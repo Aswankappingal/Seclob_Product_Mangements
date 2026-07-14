@@ -32,7 +32,7 @@ const ProductDetails = () => {
             setQuantity(prev => prev - 1);
         }
     };
-    const { productInnerDetails, status, error,refetch } = useProductInnerDetails();
+    const { productInnerDetails, status, error, refetch } = useProductInnerDetails();
     const { subCategories, status: subCategoryStatus, error: subcategoryError, refetchSubCategories } = useFtechAllSubCategory()
 
     const [formData, setFormData] = useState({
@@ -51,7 +51,7 @@ const ProductDetails = () => {
                 description: productInnerDetails.description || '',
                 subcategory: productInnerDetails.subcategory || '',
                 variants: productInnerDetails.variants || [{ ram: '', price: '', QTY: '' }],
-                images: productInnerDetails.images ||[]
+                images: productInnerDetails.images || []
             });
         }
     }, [productInnerDetails]);
@@ -82,7 +82,7 @@ const ProductDetails = () => {
     };
     const handleSubmit = async () => {
         try {
-            const response = await axios.patch(`${backendUrl}/artifitia/update-product/${productId}`, formData);
+            const response = await axios.patch(`${backendUrl}/seclob/update-product/${productId}`, formData);
             if (response.data) {
                 toast('Product Updated successfully');
                 setFormData({
@@ -93,8 +93,8 @@ const ProductDetails = () => {
                     variants: [{ ram: '', price: '', QTY: '' }],
                     images: []
                 });
-               setAddProductModalIsOpen(false);
-               refetch()
+                setAddProductModalIsOpen(false);
+                refetch()
             }
         } catch (error) {
             console.error('Error adding product:', error);
@@ -148,7 +148,7 @@ const ProductDetails = () => {
     };
     if (status == 'loading') {
         return <div>
-             <Box sx={{ width: '100%' }}>
+            <Box sx={{ width: '100%' }}>
                 <LinearProgress />
             </Box>
         </div>
@@ -158,17 +158,17 @@ const ProductDetails = () => {
             <ScrollToTopOnMount />
             <Navbar />
             <ToastContainer
-                            position="top-right"
-                            autoClose={3000}
-                            hideProgressBar={false}
-                            newestOnTop={false}
-                            closeOnClick
-                            rtl={false}
-                            pauseOnFocusLoss
-                            draggable
-                            pauseOnHover
-                            theme="light"
-                        />
+                position="top-right"
+                autoClose={3000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+            />
             {
                 //Add Product Modal
                 addProductModalIsOpen && (
@@ -201,36 +201,36 @@ const ProductDetails = () => {
                                         </td>
                                     </tr>
 
-                                
+
                                     {formData.variants.map((variant, index) => (
-                                    <tr key={index} className="variants-row">
-                                        <td className="table-key key-variance">
-                                            {index === 0 ? 'Variants:' : ''}
-                                        </td>
-                                        <td className="variance-data">
-                                            <div className="variance-details">
-                                                <span>Ram:</span>
-                                                <input
-                                                    type="text"
-                                                    value={variant.ram}
-                                                    onChange={(e) => handleVariantEdit(index, 'ram', e.target.value)}
-                                                />
-                                                <span>Price:</span>
-                                                <input
-                                                    type="number"
-                                                    value={variant.price}
-                                                    onChange={(e) => handleVariantEdit(index, 'price', e.target.value)}
-                                                />
-                                                <span>QTY:</span>
-                                                <input
-                                                    type="number"
-                                                    value={variant.QTY}
-                                                    onChange={(e) => handleVariantEdit(index, 'QTY', e.target.value)}
-                                                />
-                                            </div>
-                                        </td>
-                                    </tr>
-                                ))}
+                                        <tr key={index} className="variants-row">
+                                            <td className="table-key key-variance">
+                                                {index === 0 ? 'Variants:' : ''}
+                                            </td>
+                                            <td className="variance-data">
+                                                <div className="variance-details">
+                                                    <span>Ram:</span>
+                                                    <input
+                                                        type="text"
+                                                        value={variant.ram}
+                                                        onChange={(e) => handleVariantEdit(index, 'ram', e.target.value)}
+                                                    />
+                                                    <span>Price:</span>
+                                                    <input
+                                                        type="number"
+                                                        value={variant.price}
+                                                        onChange={(e) => handleVariantEdit(index, 'price', e.target.value)}
+                                                    />
+                                                    <span>QTY:</span>
+                                                    <input
+                                                        type="number"
+                                                        value={variant.QTY}
+                                                        onChange={(e) => handleVariantEdit(index, 'QTY', e.target.value)}
+                                                    />
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    ))}
                                     <tr>
                                         <td></td>
                                         <td>
@@ -340,7 +340,7 @@ const ProductDetails = () => {
                                 <span className='availability'>Availability :</span>
                                 <span className='stock-status'>
                                     <IoCheckmarkOutline />
-                                    {productInnerDetails?.variants?.[selectedVariant].QTY > 0 ? "In stock" : (<span style={{color:"red"}}>Out Of Stock</span>)}
+                                    {productInnerDetails?.variants?.[selectedVariant].QTY > 0 ? "In stock" : (<span style={{ color: "red" }}>Out Of Stock</span>)}
                                 </span>
                             </p>
                             <p className="stock-count-text">

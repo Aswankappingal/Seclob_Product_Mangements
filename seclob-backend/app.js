@@ -10,7 +10,7 @@ const app = express();
 
 app.use(cors());
 app.use(express.json({ limit: "20mb" }));
-app.use("/artifitia", router);
+app.use("/seclob", router);
 
 async function connection() {
     const URL = `${process.env.DB_URL}/${process.env.DB_NAME}`;

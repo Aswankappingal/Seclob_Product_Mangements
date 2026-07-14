@@ -221,7 +221,7 @@ const HomePage = () => {
         setAddSubCatLoading(true)
         e.preventDefault()
         try {
-            const responce = await axios.post(`${backendUrl}/artifitia/add-sub-category`, {
+            const responce = await axios.post(`${backendUrl}/seclob/add-sub-category`, {
                 parent_category: parentcategoryId,
                 sub_category_name: subcategory
             })
@@ -256,7 +256,7 @@ const HomePage = () => {
 
         setAddProdLoading(true)
         try {
-            const response = await axios.post(`${backendUrl}/artifitia/add-product`, formData);
+            const response = await axios.post(`${backendUrl}/seclob/add-product`, formData);
             if (response.data) {
                 toast.success('Product added successfully');
                 setFormData({
@@ -631,7 +631,7 @@ const HomePage = () => {
                                             </tbody>
                                         </table>
                                         <div className="buttons">
-                                            <button className="addProd" onClick={handleSubmit} disabled={addProdLoading}>{addProdLoading?"ADING...":"ADD"}</button>
+                                            <button className="addProd" onClick={handleSubmit} disabled={addProdLoading}>{addProdLoading ? "ADING..." : "ADD"}</button>
                                             <button className="discartProd" onClick={closeProductModal}>DISCARD</button>
                                         </div>
                                     </div>

@@ -4,7 +4,7 @@ import backendUrl from '../../../backendUrl';
 export const fetchAllSubCategories = createAsyncThunk(
   'subcategory/fetchSubCategories',
   async () => {
-    const response = await fetch(`${backendUrl}/artifitia/fetch-all-sub-category`);
+    const response = await fetch(`${backendUrl}/seclob/fetch-all-sub-category`);
     return response.json();
   }
 );

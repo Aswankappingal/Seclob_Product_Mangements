@@ -4,7 +4,7 @@ import backendUrl from '../../../backendUrl';
 export const fetchAllProducts = createAsyncThunk(
   'AllProducts/fetchAllProducts',
   async () => {
-    const response = await fetch(`${backendUrl}/artifitia/fetch-all-products`);
+    const response = await fetch(`${backendUrl}/seclob/fetch-all-products`);
     return response.json();
   }
 );

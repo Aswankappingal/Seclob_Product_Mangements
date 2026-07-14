@@ -12,14 +12,14 @@ export const fetchLoginedUser = createAsyncThunk(
         throw new Error('No token found');
       }
 
-      const response = await axios.get(`${backendUrl}/artifitia/profile`, {
+      const response = await axios.get(`${backendUrl}/seclob/profile`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-      
+
       return response.data;
-      
+
     } catch (error) {
       if (error.response?.status === 401) {
         localStorage.removeItem('token');

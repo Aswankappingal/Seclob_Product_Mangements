@@ -6,7 +6,7 @@ export const userSignup = createAsyncThunk(
   'user/signup',
   async (userData, { rejectWithValue }) => {
     try {
-      const response = await axios.post(`${backendUrl}/artifitia/user-signup`, userData);
+      const response = await axios.post(`${backendUrl}/seclob/user-signup`, userData);
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response ? error.response.data : error.message);

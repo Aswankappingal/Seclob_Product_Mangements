@@ -5,7 +5,7 @@ import backendUrl from '../../../backendUrl';
 export const fetchSubcategory = createAsyncThunk(
   'subcategory/fetchSubcategory',
   async (parent_category) => {
-    const response = await axios.get(`${backendUrl}/artifitia/fetch-sub-category/${parent_category}`);
+    const response = await axios.get(`${backendUrl}/seclob/fetch-sub-category/${parent_category}`);
     return response.data;
   }
 );

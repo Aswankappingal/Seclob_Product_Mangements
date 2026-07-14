@@ -2,17 +2,17 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import backendUrl from '../../../backendUrl';
 
 export const fetchProductDetails = createAsyncThunk(
-  'productDetails/fetchProductDetails', 
+  'productDetails/fetchProductDetails',
   async (id) => {
-    const response = await fetch(`${backendUrl}/artifitia/fetch-product-details/${id}`);
+    const response = await fetch(`${backendUrl}/seclob/fetch-product-details/${id}`);
     return response.json();
   }
 );
 
 const productDetailsSlice = createSlice({
-  name: 'productDetails', 
+  name: 'productDetails',
   initialState: {
-    data: null, 
+    data: null,
     status: 'idle',
     error: null,
   },

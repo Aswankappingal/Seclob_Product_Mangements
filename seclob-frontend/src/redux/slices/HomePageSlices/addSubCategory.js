@@ -7,8 +7,8 @@ export const addSubCategory = createAsyncThunk(
   'subcategory/addSubCategory',
   async (newSubCategory, { rejectWithValue }) => {
     try {
-      const response = await axios.post(`${backendUrl}/artifitia/add-sub-category`, newSubCategory);
-      return response.data; 
+      const response = await axios.post(`${backendUrl}/seclob/add-sub-category`, newSubCategory);
+      return response.data;
     } catch (error) {
       return rejectWithValue(error.response?.data || 'An error occurred');
     }
@@ -24,7 +24,7 @@ const subCategorySlice = createSlice({
   },
   reducers: {
     clearError: (state) => {
-      state.error = null; 
+      state.error = null;
     },
   },
   extraReducers: (builder) => {
@@ -33,7 +33,7 @@ const subCategorySlice = createSlice({
         state.status = 'loading';
       })
       .addCase(addSubCategory.fulfilled, (state, action) => {
-        state.data.push(action.payload); 
+        state.data.push(action.payload);
         state.status = 'succeeded';
       })
       .addCase(addSubCategory.rejected, (state, action) => {

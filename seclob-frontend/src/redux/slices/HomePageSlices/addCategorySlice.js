@@ -6,11 +6,11 @@ export const addCategory = createAsyncThunk(
     'category/addCategory',
     async (categoryData, { rejectWithValue }) => {
         try {
-            const response = await axios.post(`${backendUrl}/artifitia/add-category`, categoryData);
+            const response = await axios.post(`${backendUrl}/seclob/add-category`, categoryData);
             console.log(response.data);
 
             return response.data;
-            
+
         } catch (error) {
             // Check if the error response is related to an existing category
             if (error.response && error.response.status === 409) {
@@ -37,20 +37,20 @@ const categorySlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
-        .addCase(addCategory.pending, (state) => {
-            state.loading = true;
-            state.error = null;
-            state.successMessage = null;
-        })
-        .addCase(addCategory.fulfilled, (state, action) => {
-            state.loading = false;
-            state.successMessage = action.payload.message;
-            state.categories.push(action.payload.category);
-        })
-        .addCase(addCategory.rejected, (state, action) => {
-            state.loading = false;
-            state.error = action.payload || 'Something went wrong';
-        });
+            .addCase(addCategory.pending, (state) => {
+                state.loading = true;
+                state.error = null;
+                state.successMessage = null;
+            })
+            .addCase(addCategory.fulfilled, (state, action) => {
+                state.loading = false;
+                state.successMessage = action.payload.message;
+                state.categories.push(action.payload.category);
+            })
+            .addCase(addCategory.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.payload || 'Something went wrong';
+            });
     },
 });
 

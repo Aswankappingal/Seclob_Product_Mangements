@@ -6,7 +6,7 @@ export const userSignin = createAsyncThunk(
   'user/signin',
   async (userData, { rejectWithValue }) => {
     try {
-      const response = await axios.post(`${backendUrl}/artifitia/user-login`, userData);
+      const response = await axios.post(`${backendUrl}/seclob/user-login`, userData);
       // Save token or other data to localStorage if needed
       if (response.data?.token) {
         localStorage.setItem('token', response.data.token);
