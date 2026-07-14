@@ -15,7 +15,10 @@ import useFetchCategories from '../../redux/hooks/HomePageHooks/useFetchCategory
 import useFtechAllSubCategory from '../../redux/hooks/HomePageHooks/useFtechAllSubCategory';
 import axios from 'axios';
 import backendUrl from '../../backendUrl';
-import { IoHeartOutline } from 'react-icons/io5';
+import { IoHeart, IoHeartOutline } from 'react-icons/io5';
+import { useDispatch } from 'react-redux';
+import UseLoginedUser from '../../redux/hooks/useLoginedUser';
+import { fetchLoginedUser } from '../../redux/slices/loginedUserSlice';
 import { FaStar } from 'react-icons/fa';
 import useFetchAllProduct from '../../redux/hooks/HomePageHooks/useFetchAllProduct';
 import ImageCropper from '../ImageCropper';
@@ -23,6 +26,8 @@ import Box from '@mui/material/Box';
 import LinearProgress from '@mui/material/LinearProgress';
 
 const HomePage = () => {
+    const dispatch = useDispatch();
+    const { loginedUser } = UseLoginedUser();
     const [selectedSubCategories, setSelectedSubCategories] = useState([]);
 
 
@@ -151,6 +156,32 @@ const HomePage = () => {
                 ? prevSelected.filter((id) => id !== subCategoryId) // Uncheck
                 : [...prevSelected, subCategoryId] // Check
         );
+    };
+
+    const handleWishlistToggle = async (productId) => {
+        const token = localStorage.getItem('token');
+        if (!token) {
+            toast.error("Please login to add products to wishlist");
+            return;
+        }
+        try {
+            const response = await axios.post(
+                `${backendUrl}/seclob/wishlist/toggle`,
+                { productId },
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
+            );
+            if (response.data) {
+                toast.success(response.data.message);
+                dispatch(fetchLoginedUser());
+            }
+        } catch (error) {
+            console.error("Error toggling wishlist:", error);
+            toast.error("Failed to update wishlist");
+        }
     };
     const filteredProducts = selectedSubCategories.length > 0
         ? AllProducts.filter((product) =>
@@ -668,7 +699,13 @@ const HomePage = () => {
                                         currentProducts.map((product, index) => (
                                             <div className="col-lg-4 col-6" key={index}>
                                                 <div className="card">
-                                                    <div className="wishlist"><IoHeartOutline /></div>
+                                                    <div className="wishlist" onClick={() => handleWishlistToggle(product._id)}>
+                                                        {loginedUser?.wishlist?.some(item => item._id === product._id || item === product._id) ? (
+                                                            <IoHeart style={{ color: 'red' }} />
+                                                        ) : (
+                                                            <IoHeartOutline />
+                                                        )}
+                                                    </div>
                                                     <Link to={`/product-details/${product._id}`}>
                                                         <div className="prod-details">
                                                             <div className="prod-image">

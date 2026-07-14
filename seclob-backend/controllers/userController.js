@@ -50,4 +50,34 @@ const loginUser = async (req, res) => {
     }
 };
 
-module.exports = { createUser,loginUser };
+const toggleWishlist = async (req, res) => {
+    try {
+        const { productId } = req.body;
+        const userId = req.user._id;
+
+        if (!productId) {
+            return res.status(400).json({ error: "Product ID is required" });
+        }
+
+        const user = await User.findById(userId);
+        if (!user) {
+            return res.status(404).json({ error: "User not found" });
+        }
+
+        const index = user.wishlist.indexOf(productId);
+        if (index > -1) {
+            user.wishlist.splice(index, 1);
+            await user.save();
+            return res.status(200).json({ message: "Removed from wishlist", wishlist: user.wishlist });
+        } else {
+            user.wishlist.push(productId);
+            await user.save();
+            return res.status(200).json({ message: "Added to wishlist", wishlist: user.wishlist });
+        }
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+};
+
+module.exports = { createUser,loginUser,toggleWishlist };

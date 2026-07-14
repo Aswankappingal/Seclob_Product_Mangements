@@ -9,11 +9,37 @@ import useFetchAllProduct from '../../redux/hooks/HomePageHooks/useFetchAllProdu
 import { FaAngleRight, FaStar } from 'react-icons/fa'
 import { BsChevronRight } from 'react-icons/bs'
 import { RiCloseCircleLine } from 'react-icons/ri'
+import { useDispatch } from 'react-redux'
+import { fetchLoginedUser } from '../../redux/slices/loginedUserSlice'
+import axios from 'axios'
+import backendUrl from '../../backendUrl'
 
 const Navbar = () => {
     const navigate = useNavigate()
     const { loginedUser, status, error, isAuthTokenPresent } = UseLoginedUser()
+    const dispatch = useDispatch()
     const [logoutModalIsOpen, setLogoutModalIsOpen] = useState(false)
+
+    const handleRemoveFromWishlist = async (productId) => {
+        const token = localStorage.getItem('token');
+        if (!token) return;
+        try {
+            const response = await axios.post(
+                `${backendUrl}/seclob/wishlist/toggle`,
+                { productId },
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
+            );
+            if (response.data) {
+                dispatch(fetchLoginedUser());
+            }
+        } catch (error) {
+            console.error("Error removing from wishlist:", error);
+        }
+    };
     const [searchQuery, setSearchQuery] = useState('')
     const [showSearchResults, setShowSearchResults] = useState(false)
     const [filteredProducts, setFilteredProducts] = useState([])
@@ -85,7 +111,7 @@ const Navbar = () => {
                             <Link>
                                 <div className='wishlist' data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
                                     <IoIosHeartEmpty className='heart-icon' />
-                                    <div className="count">0</div>
+                                    <div className="count">{loginedUser?.wishlist?.length || 0}</div>
                                 </div>
                             </Link>
                             {/* ofcanvas-section */}
@@ -99,27 +125,42 @@ const Navbar = () => {
                                         <BsChevronRight data-bs-dismiss="offcanvas" aria-label="Close" className='right-angle' />
                                     </div>
                                     <div className="offcanvas-body">
-                                        <div className="product-details-wrapper">
-                                        <RiCloseCircleLine className='close-icon' />
-                                        <div className="product-details">
-                                            <div className="product-details-left">
-                                                <div className="product-image">
-
+                                        {loginedUser?.wishlist && loginedUser.wishlist.length > 0 ? (
+                                            loginedUser.wishlist.map((item) => (
+                                                <div className="product-details-wrapper" key={item._id} style={{ position: 'relative' }}>
+                                                    <RiCloseCircleLine 
+                                                        className='close-icon' 
+                                                        style={{ cursor: 'pointer' }}
+                                                        onClick={(e) => {
+                                                            e.stopPropagation();
+                                                            handleRemoveFromWishlist(item._id);
+                                                        }} 
+                                                    />
+                                                    <div className="product-details" data-bs-dismiss="offcanvas" style={{ cursor: 'pointer' }} onClick={() => handleProductClick(item._id)}>
+                                                        <div className="product-details-left">
+                                                            <div className="product-image">
+                                                                <img src={item.images?.[0]} alt={item.title} style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '8px' }} />
+                                                            </div>
+                                                        </div>
+                                                        <div className="product-details-right">
+                                                            <h2 className="product-title">{item.title}</h2>
+                                                            <h3 className="product-price">${item.variants?.[0]?.price}</h3>
+                                                            <div className="stars">
+                                                                <FaStar className='star-icon' />
+                                                                <FaStar className='star-icon' />
+                                                                <FaStar className='star-icon' />
+                                                                <FaStar className='star-icon' />
+                                                                <FaStar className='star-icon' />
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
+                                            ))
+                                        ) : (
+                                            <div style={{ textAlign: 'center', padding: '2rem', color: '#888' }}>
+                                                Your wishlist is empty
                                             </div>
-                                            <div className="product-details-right">
-                                                <h2 className="product-title">HP AMD Ryzen 3</h2>
-                                                <h3 className="product-price">$529.99</h3>
-                                                <div className="stars">
-                                                <FaStar className='star-icon' />
-                                                <FaStar className='star-icon' />
-                                                <FaStar className='star-icon' />
-                                                <FaStar className='star-icon' />
-                                                <FaStar className='star-icon' />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        </div>
+                                        )}
                                     </div>
                                 </div>
                             </div>

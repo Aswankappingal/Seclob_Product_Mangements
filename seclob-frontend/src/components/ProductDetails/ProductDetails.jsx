@@ -5,7 +5,10 @@ import Breadcrumb from '../BreadCrumb/BreadCrumb';
 import { IoCheckmarkOutline } from 'react-icons/io5';
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { IoIosHeartEmpty } from 'react-icons/io';
+import { IoIosHeart, IoIosHeartEmpty } from 'react-icons/io';
+import { useDispatch } from 'react-redux';
+import UseLoginedUser from '../../redux/hooks/useLoginedUser';
+import { fetchLoginedUser } from '../../redux/slices/loginedUserSlice';
 import useProductInnerDetails from '../../redux/hooks/productdetailsHooks/useFetchProductDetails';
 import axios from 'axios';
 import backendUrl from '../../backendUrl';
@@ -21,6 +24,38 @@ const ProductDetails = () => {
     const [mainImage, setMainImage] = useState(0);
     const [addProductModalIsOpen, setAddProductModalIsOpen] = useState(false);
     const { productId } = useParams()
+    const dispatch = useDispatch();
+    const { loginedUser } = UseLoginedUser();
+
+    const isWishlisted = loginedUser?.wishlist?.some(
+        item => item._id === productId || item === productId
+    );
+
+    const handleWishlistToggle = async () => {
+        const token = localStorage.getItem('token');
+        if (!token) {
+            toast.error("Please login to add products to wishlist");
+            return;
+        }
+        try {
+            const response = await axios.post(
+                `${backendUrl}/seclob/wishlist/toggle`,
+                { productId },
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
+            );
+            if (response.data) {
+                toast.success(response.data.message);
+                dispatch(fetchLoginedUser());
+            }
+        } catch (error) {
+            console.error("Error toggling wishlist:", error);
+            toast.error("Failed to update wishlist");
+        }
+    };
 
 
     const increment = () => {
@@ -399,8 +434,12 @@ const ProductDetails = () => {
                             <div className="button-section">
                                 <Link><button onClick={() => setAddProductModalIsOpen(true)}>Edit product</button></Link>
                                 <button>Buy it now</button>
-                                <div className="wishlist">
-                                    <IoIosHeartEmpty className='heart-icon' />
+                                <div className="wishlist" onClick={handleWishlistToggle}>
+                                    {isWishlisted ? (
+                                        <IoIosHeart className='heart-icon' style={{ color: 'red' }} />
+                                    ) : (
+                                        <IoIosHeartEmpty className='heart-icon' />
+                                    )}
                                 </div>
                             </div>
                         </div>
