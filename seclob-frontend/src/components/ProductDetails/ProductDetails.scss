@@ -15,8 +15,13 @@
         animation: overlayFadeIn 0.25s ease;
 
         @keyframes overlayFadeIn {
-            from { opacity: 0; }
-            to   { opacity: 1; }
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
     }
 
@@ -35,14 +40,22 @@
         &::-webkit-scrollbar {
             width: 5px;
         }
+
         &::-webkit-scrollbar-thumb {
             background: #e0e0e0;
             border-radius: 10px;
         }
 
         @keyframes modalSlideUp {
-            from { opacity: 0; transform: translateY(30px) scale(0.97); }
-            to   { opacity: 1; transform: translateY(0)   scale(1);    }
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.97);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
         }
 
         h3 {
@@ -100,6 +113,7 @@
         }
 
         .productname-section {
+
             input,
             select {
                 width: 100%;
@@ -351,8 +365,19 @@
         padding-top: 7rem !important;
         padding: 2rem;
 
+       
+      
+
+
         .details-left {
-            
+
+             .breadCrumb-for-ProductDetails{
+                margin-left: 20px  !important;
+                padding-bottom: 2rem !important;
+            }
+
+
+
             .main-image {
                 width: 100%;
                 height: 300px;
@@ -360,7 +385,8 @@
                 border-radius: 20px;
                 margin-bottom: 1rem;
                 overflow: hidden;
-                img{
+
+                img {
                     width: 100%;
                     height: 100%;
                     object-fit: cover;
@@ -374,7 +400,8 @@
                 border-radius: 20px;
                 overflow: hidden;
                 cursor: pointer;
-                img{
+
+                img {
                     width: 100%;
                     height: 100%;
                     object-fit: cover;
@@ -456,7 +483,7 @@
                     gap: 0.75rem;
                     flex-wrap: wrap;
 
-                    > span {
+                    >span {
                         font-family: Poppins;
                         font-size: 15px;
                         font-weight: 500;
@@ -492,13 +519,13 @@
                 }
 
                 .qty-counter {
-                    > div {
+                    >div {
                         display: flex;
                         align-items: center;
                         gap: 0px !important;
                         padding-top: 1.5rem !important;
 
-                        > span {
+                        >span {
                             font-family: Poppins;
                             font-size: 15px;
                             font-weight: 500;
@@ -586,7 +613,8 @@
                         justify-content: center;
                         align-items: center;
                         background-color: #EEEEEE;
-                        .heart-icon{
+
+                        .heart-icon {
                             width: 30px;
                             height: 30px;
                         }
@@ -595,11 +623,14 @@
             }
         }
     }
-    @media(max-width:991px){
+
+    @media(max-width:991px) {
         .details-wrapper {
             padding-top: 9rem !important;
+
             .details-right {
                 padding-left: 1rem !important;
+
                 .button-section {
                     display: flex;
                     padding-top: 1rem;
@@ -618,7 +649,8 @@
                     .wishlist {
                         height: 30px !important;
                         width: 30px !important;
-                        .heart-icon{
+
+                        .heart-icon {
                             width: 15px !important;
                             height: 15px !important;
                         }

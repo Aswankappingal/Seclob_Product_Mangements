@@ -314,7 +314,7 @@ const ProductDetails = () => {
             <div className="details-wrapper">
                 <div className="row">
                     <div className="col-lg-4 details-left">
-                        <Breadcrumb items={items} />
+                        <Breadcrumb items={items} className="breadCrumb-for-ProductDetails" />
                         <div className="main-image">
                             <img src={productInnerDetails?.images?.[mainImage]} alt="Product Main" />
                         </div>
