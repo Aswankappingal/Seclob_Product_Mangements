@@ -2,7 +2,8 @@
     .hidden {
         overflow-y: hidden;
     }
-    .filter-btn{
+
+    .filter-btn {
         display: none;
     }
 
@@ -233,8 +234,9 @@
                 padding-left: 1rem;
             }
 
-           
+
         }
+
         .add-variance-btn {
             display: block;
             margin-left: auto;
@@ -285,90 +287,91 @@
     }
 
     // .sideBarMainWrapper {
-        .sidebar {
-            background-color: rgb(255, 255, 255);
-            width: 100%;
-            height: 100vh;
+    .sidebar {
+        background-color: rgb(255, 255, 255);
+        width: 100%;
+        height: 100vh;
 
-            h5 {
-                font-family: Poppins;
-                font-size: 16.09px;
-                font-weight: 500;
-                line-height: 24.14px;
-                color: #003F62;
-
-            }
-
-            h6 {
-                font-family: Poppins;
-                font-size: 16.09px;
-                font-weight: 400;
-                line-height: 24.14px;
-
-            }
-
-            .accordion-button {
-                background-color: white !important;
-            }
-
-            .accordion-item {
-                border: none !important;
-            }
-
-            .accordion-button:not(.collapsed) {
-                color: #000000;
-                box-shadow: inset 0 -1px 0 rgb(0 0 0 / 13%);
-            }
-
-            .checkbox-wrapper {
-                display: flex;
-                align-items: center;
-                margin-bottom: 8px;
-
-
-
-
-
-                input[type="checkbox"] {
-                    -webkit-appearance: none;
-                    -moz-appearance: none;
-                    appearance: none;
-                    width: 23px;
-                    height: 23px;
-                    border: 2px solid #555;
-                    border-radius: 4px;
-                    background-color: #e0e0e0;
-                    display: inline-block;
-                    position: relative;
-                    cursor: pointer;
-                    outline: none;
-                    margin-right: 8px;
-                    transition: background-color 0.3s ease;
-
-                    &:checked {
-                        background-color: #555;
-                        border-color: #555;
-                    }
-
-                    &:checked::after {
-                        content: '✔';
-                        font-size: 12px;
-                        color: white;
-                        position: absolute;
-                        top: 50%;
-                        left: 50%;
-                        transform: translate(-50%, -50%);
-                    }
-                }
-
-                label {
-                    cursor: pointer;
-                    font-size: 14px;
-                    color: #333;
-                }
-            }
+        h5 {
+            font-family: Poppins;
+            font-size: 16.09px;
+            font-weight: 500;
+            line-height: 24.14px;
+            color: #003F62;
 
         }
+
+        h6 {
+            font-family: Poppins;
+            font-size: 16.09px;
+            font-weight: 400;
+            line-height: 24.14px;
+
+        }
+
+        .accordion-button {
+            background-color: white !important;
+        }
+
+        .accordion-item {
+            border: none !important;
+        }
+
+        .accordion-button:not(.collapsed) {
+            color: #000000;
+            box-shadow: inset 0 -1px 0 rgb(0 0 0 / 13%);
+        }
+
+        .checkbox-wrapper {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+
+
+
+
+
+            input[type="checkbox"] {
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                appearance: none;
+                width: 23px;
+                height: 23px;
+                border: 2px solid #555;
+                border-radius: 4px;
+                background-color: #e0e0e0;
+                display: inline-block;
+                position: relative;
+                cursor: pointer;
+                outline: none;
+                margin-right: 8px;
+                transition: background-color 0.3s ease;
+
+                &:checked {
+                    background-color: #555;
+                    border-color: #555;
+                }
+
+                &:checked::after {
+                    content: '✔';
+                    font-size: 12px;
+                    color: white;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                }
+            }
+
+            label {
+                cursor: pointer;
+                font-size: 14px;
+                color: #333;
+            }
+        }
+
+    }
+
     // }
 
     .product-listing-wrapper {
@@ -466,26 +469,32 @@
                 }
             }
         }
-      
+
     }
-    .filterOffCanvasMaiWrapper{
-        .offcanvas{
+
+    .filterOffCanvasMaiWrapper {
+        .offcanvas {
             width: 90%;
         }
     }
-    @media(max-width:991px){
+
+    @media(max-width:991px) {
         .home {
             padding-top: 8rem;
         }
-        .detail-left{
+
+        .detail-left {
             display: none;
         }
-        .detail-right{
-           width: 100% !important;
+
+        .detail-right {
+            width: 100% !important;
         }
+
         .detail-right {
             gap: 10px !important;
             padding-bottom: 1rem !important;
+
             button {
                 padding: 0 10px !important;
                 border-radius: 10px !important;
@@ -493,7 +502,8 @@
                 height: 30px;
                 line-height: 10px;
             }
-            .filter-btn{
+
+            .filter-btn {
                 display: block;
             }
         }
