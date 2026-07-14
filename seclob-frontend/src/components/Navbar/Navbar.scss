@@ -262,6 +262,7 @@
                 .cart {
                     display: flex;
                     gap: 10px;
+                    cursor: none;
 
                     .cart-icon-wrapper {
                         display: flex;
@@ -284,7 +285,10 @@
                             color: white;
                             border-radius: 50%;
                             font-size: 9px;
+                            
+                            
                         }
+
                     }
                 }
             }

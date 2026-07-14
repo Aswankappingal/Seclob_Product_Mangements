@@ -643,7 +643,7 @@ const HomePage = () => {
                                 {
                                     currentProducts.length > 0 ? (
                                         currentProducts.map((product, index) => (
-                                            <div className="col-lg-3 col-6" key={index}>
+                                            <div className="col-lg-4 col-6" key={index}>
                                                 <div className="card">
                                                     <div className="wishlist"><IoHeartOutline /></div>
                                                     <Link to={`/product-details/${product._id}`}>
